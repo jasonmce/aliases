@@ -1,0 +1,14 @@
+# Aliases for software that I would rather run in containers.
+alias ffmpeg="echo ' \
+********************* \
+** FROM CONTAINERi ** \
+*********************\
+
+- PWD is mounted as /local \
+- /tmp is mounted at /temp'; \
+docker pull jrottenberg/ffmpeg; \
+docker run --rm -it \
+  --user $UID:$GROUPS \
+  -v $(pwd):/local \
+  -v /tmp:/temp \
+  jrottenberg/ffmpeg"
