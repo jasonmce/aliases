@@ -3,6 +3,62 @@
 
 #!/bin/sh
 
+alias dc="docker-compose"
+alias dcps="docker-compose ps --format '{{.ID}} ~ {{.Names}} ~ {{.Status}} ~ {{.Image}}'"
+alias dcup="docker-compose up"
+alias dcupd="docker-compose up -d"
+
+##
+# Docker-compose shell.
+# Determines the container's shell and opens a command line shell.
+dcsh() {
+  if [ -z $1 ]; then
+    echo "Syntax: dcsh SERVICE"
+    return;
+  fi
+
+  # If the OS is Alpine use /bin/ash.  Otherwise guess /bin/bash.
+  OS=$(dcgetos $1)
+  if [[ $OS = *"Alpine"* ]]; then
+    echo "Opening an ash shell."
+    dc exec $1 /bin/ash
+    return
+  else
+    echo "Opening a bash shell."
+    dc exec $1 /bin/bash
+  fi
+}
+
+##
+# Docker-Compose Get OS.
+#
+# Returns the first line returned from /etc/os-release or /etc/lsb-release.
+# Normally this is the PRETTY_NAME value, which is all we will want.
+dcgetos() {
+  if [ -z $1 ]; then
+    echo "Syntax: dcos SERVICE"
+    return;
+  fi
+
+  # From https://serverfault.com/a/805450
+  # Check /etc/os-release for most vendors like Debian, CentOS and Alpine,
+  # or /etc/lsb-release for Ubuntu.
+  OS=$(docker-compose exec $1 cat /etc/os-release)
+  if [ $? == 0 ]; then
+    echo  "${OS}" | head -n 1
+    return
+  fi
+
+  OS=$(docker-compose exec $1 cat /etc/lsb-release)
+  if [ -z "${OS}" ]; then
+    echo "Could not determine OS?"
+    return
+  fi
+  echo  "${OS}" | head -n 1
+}
+
+
+
 alias dk='docker'
 alias dki='docker images'
 alias dks='docker service'
