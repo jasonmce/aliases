@@ -135,14 +135,14 @@ dkpl() {
   docker push $LATEST
 }
 
-dkclean() {
-  docker rm $(docker ps --all -q -f status=exited)
-  docker volume rm $(docker volume ls -qf dangling=true)
-}
+#dkclean() {
+#  docker rm $(docker ps --all -q -f status=exited)
+#  docker volume rm $(docker volume ls -qf dangling=true)
+#}
 
-dkprune() {
-  docker system prune -af
-}
+#dkprune() {
+#  docker system prune -af
+#}
 
 dktop() {
   docker stats --format "table {{.Container}}\t{{.Name}}\t{{.CPUPerc}}  {{.MemPerc}}\t{{.NetIO}}\t{{.BlockIO}}"
