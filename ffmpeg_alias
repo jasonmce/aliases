@@ -1,7 +1,7 @@
-# Aliases for software that I would rather run in containers.
+# Alias for software that I would rather run in containers.
 alias ffmpeg="echo ' \
 ********************* \
-** FROM CONTAINERi ** \
+** FROM CONTAINER ** \
 *********************\
 
 - PWD is mounted as /local \
