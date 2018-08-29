@@ -1,0 +1,11 @@
+# Alias for software that I would rather run in containers.
+alias bfg="echo ' \
+********************* \
+** FROM CONTAINER ** \
+*********************\
+
+- PWD is mounted as /data'; \
+docker pull tagplus5/git-bfg; \
+docker run -it --rm \
+  -v `pwd`:/data \
+  tagplus5/git-bfg"
