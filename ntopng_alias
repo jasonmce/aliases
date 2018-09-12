@@ -1,0 +1,9 @@
+# Network TOP - Next Generation server.
+# https://github.com/xtao/ntopng/blob/master/README.ntopng
+alias ntopng="printf ' \
+*********************\n \
+** FROM CONTAINER ** \n\
+*********************\n\
+Site is at http://localhost:3000 with creds admin/admin\n'; \
+docker pull lucaderi/ntopng-docker; \
+docker run --name=ntopng --rm --net=host -t -p 3000:3000 lucaderi/ntopng-docker"
