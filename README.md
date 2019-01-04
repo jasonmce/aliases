@@ -2,9 +2,9 @@
 Set of command line aliases.
 File must be named NAME_alias (for a single alias command) or NAME_alises (for multiple definitions).
 
-Clone to your home directory and add the following to your .bash_rc file:
+Clone to your home directory and add the following to your .bashrc file:
 ```
-# Include person list of aliases.
+# Include personal list of aliases.
 if [ -d ~/aliases ]; then
   source <(cat ~/aliases/*_alias*)
 fi
