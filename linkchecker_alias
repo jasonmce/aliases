@@ -1,0 +1,15 @@
+# Linkchecker - Check links in web documents or full websites.
+# https://github.com/wummel/linkchecker
+alias linkchecker="printf ' \
+*********************\n \
+** FROM CONTAINER ** \n\
+*********************\n\
+** Default output path is the /tmp directory.\n'; \
+docker pull jare/linkchecker; \
+docker run --name=linkchecker \
+  --rm \
+  -it \
+  --user=$UID \
+  -v /tmp:/work \
+  -w=/work \
+  jare/linkchecker";
