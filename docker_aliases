@@ -55,6 +55,7 @@ dcgetos() {
   echo  "${OS}" | head -n 1
 }
 
+alias dcupall='dc pull; dc up -d --no-deps --build'
 
 
 alias dk='docker'
@@ -178,6 +179,7 @@ dksb() {
   sleep 2
   docker service scale $1=$2
 }
+
 
 #mongo() {
 #  mongoLabel=`docker ps | grep mongo | awk '{print $NF}'`
