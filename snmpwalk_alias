@@ -1,0 +1,9 @@
+# Alias for software that I would rather run in containers.
+alias snmpwalk="echo ' \
+********************* \
+** FROM CONTAINER ** \
+*********************\
+';\
+docker pull sevendollar/snmpwalk; \
+docker run --rm sevendollar/snmpwalk snmpwalk";
+
