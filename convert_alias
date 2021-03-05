@@ -1,0 +1,13 @@
+# Alias for imagemagick convert
+alias identify="echo ' \
+********************* \
+** FROM CONTAINER ** \
+*********************\
+
+- PWD is mounted as /imgs'; \
+docker pull jrottenberg/ffmpeg; \
+docker run --rm \
+  --user $UID:$GROUPS \
+  -v $(pwd):/imgs \
+  -w='/imgs' \
+  dpokidov/imagemagick"
