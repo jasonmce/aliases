@@ -1,0 +1,8 @@
+# Pa11y - Website accessibility checker.
+# https://github.com/pa11y/pa11y
+alias pa11y="printf ' \
+*********************\n \
+** FROM CONTAINER ** \n\
+*********************\n\
+** Syntax is pa11y (-s WCAG2A|WCAG2AA=default|WCAG2AAA=extreme) https://yoursite.com.\n'; \
+docker run --rm dcycle/pa11y:2"
