@@ -9,7 +9,7 @@ alias ffmpeg="echo ' \
 docker pull jrottenberg/ffmpeg; \
 docker run --rm -it \
   --user $UID:$GROUPS \
-  -v $(pwd):/local \
+  -v "$(pwd)":/local \
   -w=/local \
   -v /tmp:/temp \
   jrottenberg/ffmpeg"
